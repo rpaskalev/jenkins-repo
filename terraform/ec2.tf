@@ -18,7 +18,7 @@ resource "aws_instance" "web" {
   user_data = file("userdata.sh")
 
   # iam_instance_profile = aws_iam_instance_profile.s3_profile.id
-  ebs_optimized        = var.ebs_optimized
+  ebs_optimized = var.ebs_optimized
 
   key_name      = "rady_key_new"
   instance_type = var.instance_type

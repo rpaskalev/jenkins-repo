@@ -23,7 +23,7 @@ pipeline {
                 echo 'Deploying infrastructure'
                 cd terraform
                 terraform init
-                terraform apply -auto-approve
+                terraform destroy -auto-approve
                 '''
             }
         }

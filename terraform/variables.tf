@@ -35,7 +35,7 @@ variable "instance_name" {
 }
 
 variable "bucket_name" {
-  default = ""
+  default = "terraform-jenkins-class-ziyotek"
 }
 
 variable "acl_type" {

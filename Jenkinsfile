@@ -22,7 +22,7 @@ pipeline {
                 sh '''
                 echo 'Deploying infrastructure'
                 cd terraform
-                terraform destroy -auto-approve
+                terraform apply -auto-approve
                 '''
             }
         }

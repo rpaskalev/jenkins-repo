@@ -1,0 +1,38 @@
+
+
+pipeline {
+  agent {
+    label any
+  }
+
+//   parameters {
+//     string(name: 'DEPLOY_ENV', description: 'Env to deploy to', defaultValue: '')
+//   }
+
+  stages {
+    stage('Deploy UI'){
+      when { branch 'sbx1' }
+      steps {
+        sh """
+          aws s3 cp file.txt s3://bucket/sbx1
+# aws s3 cp file.txt s3://$DEPLOY_ENV-bucket/$DEPLOY_ENV
+        """
+      }
+    }
+  stages {
+    stage('Deploy UI'){
+      when { branch 'qa' }
+      steps {
+        sh """
+          aws s3 cp file.txt s3://bucket/qa
+        """
+      }
+    }
+  }
+  
+  post {
+    always {
+      deleteDir()
+      }
+    }
+  }

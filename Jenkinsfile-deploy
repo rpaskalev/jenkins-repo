@@ -8,14 +8,14 @@ pipeline {
 //   parameters {
 //     string(name: 'DEPLOY_ENV', description: 'Env to deploy to', defaultValue: '')
 //   }
+//          aws s3 cp file.txt s3://bucket/sbx1
 
   stages {
     stage('Deploy UI'){
-      when { branch 'sbx1' }
+      when { branch 'main' }
       steps {
         sh """
-          aws s3 cp file.txt s3://bucket/sbx1
-# aws s3 cp file.txt s3://$DEPLOY_ENV-bucket/$DEPLOY_ENV
+          aws s3 cp file.txt s3://$DEPLOY_ENV-uniquely-grand-oriole-us-east-1/$DEPLOY_ENV
         """
       }
     }

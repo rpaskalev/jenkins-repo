@@ -19,7 +19,7 @@ pipeline {
         '''
       }
     }
-    stage('Deploy UI'){
+    stage('Deploy AI'){
       when { branch 'qa' }
       steps {
         sh '''

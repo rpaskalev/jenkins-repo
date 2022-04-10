@@ -14,18 +14,18 @@ pipeline {
     stage('Deploy UI'){
       when { branch 'main' }
       steps {
-        sh """
+        sh '''
           aws s3 cp file.txt s3://$DEPLOY_ENV-uniquely-grand-oriole-us-east-1/$DEPLOY_ENV
-        """
+        '''
       }
     }
   stages {
     stage('Deploy UI'){
       when { branch 'qa' }
       steps {
-        sh """
+        sh '''
           aws s3 cp file.txt s3://bucket/qa
-        """
+        '''
       }
     }
   }

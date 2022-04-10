@@ -9,7 +9,7 @@
 # }
 
 
-# data "aws_region" "current" {}
+data "aws_region" "current" {}
 
 # output "image_id" {
 #   value = data.aws_ami.example.image_id

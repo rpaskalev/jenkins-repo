@@ -19,7 +19,6 @@ resource "random_pet" "petname" {
 
 resource "aws_s3_bucket" "dev_bucket" {
   bucket = "development-${random_pet.petname.id}-${data.aws_region.current.id}"
-  acl    = "public-read"
 
   policy = <<EOF
 {
@@ -49,7 +48,6 @@ EOF
 }
 
 resource "aws_s3_bucket_object" "dev" {
-  acl          = "public-read"
   key          = "index.html"
   bucket       = aws_s3_bucket.dev_bucket.id
   content      = file("../assets/index.html")
@@ -59,7 +57,6 @@ resource "aws_s3_bucket_object" "dev" {
 
 resource "aws_s3_bucket" "prod_bucket" {
   bucket = "production-${random_pet.petname.id}-${data.aws_region.current.id}"
-  acl    = "public-read"
 
   policy = <<EOF
 {
@@ -89,7 +86,6 @@ EOF
 }
 
 resource "aws_s3_bucket_object" "prod" {
-  acl          = "public-read"
   key          = "index.html"
   bucket       = aws_s3_bucket.prod_bucket.id
   content      = file("../assets/index.html")
@@ -99,7 +95,6 @@ resource "aws_s3_bucket_object" "prod" {
 
 resource "aws_s3_bucket" "qa_bucket" {
   bucket = "qa-${random_pet.petname.id}-${data.aws_region.current.id}"
-  acl    = "public-read"
 
   policy = <<EOF
 {
@@ -129,7 +124,6 @@ EOF
 }
 
 resource "aws_s3_bucket_object" "qa" {
-  acl          = "public-read"
   key          = "index.html"
   bucket       = aws_s3_bucket.qa_bucket.id
   content      = file("../assets/index.html")

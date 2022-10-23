@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "rady-bucket-1-0-0-0"
+    bucket = "rady-test-bucket-12"
     key    = "jenkins/terraform.tfstate"
     region = "us-east-1"
   }

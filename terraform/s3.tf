@@ -1,24 +1,5 @@
-
-
-# resource "aws_s3_bucket" "iqies_my_first_resourse" {
-#   bucket = "${var.bucket_name}-${data.aws_region.current.id}" #-${count.index}"
-#   #acl    = var.acl_type
-
-#   tags = {
-#     Name        = var.bucket_name
-#     Environment = var.environment
-#   }
-# }
-
-
-resource "random_pet" "petname" {
-  length    = 3
-  separator = "-"
-}
-
-
 resource "aws_s3_bucket" "dev_bucket" {
-  bucket = "development-${random_pet.petname.id}-${data.aws_region.current.id}"
+  bucket = "development-rady-bucket-ziyotek-${data.aws_region.current.id}"
 
   policy = <<EOF
 {
@@ -31,9 +12,7 @@ resource "aws_s3_bucket" "dev_bucket" {
             "Action": [
                 "s3:GetObject"
             ],
-            "Resource": [
-                "arn:aws:s3:::development-${random_pet.petname.id}-${data.aws_region.current.id}/*"
-            ]
+            "Resource": "*"
         }
     ]
 }

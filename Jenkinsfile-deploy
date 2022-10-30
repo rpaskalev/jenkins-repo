@@ -5,17 +5,18 @@ pipeline {
     label any
   }
 
-//   parameters {
-//     string(name: 'DEPLOY_ENV', description: 'Env to deploy to', defaultValue: '')
-//   }
-//          aws s3 cp file.txt s3://bucket/sbx1
+parameters {
+    string(name: 'DEPLOY_ENV', description: 'Env to deploy to', defaultValue: '')
+}
+
 
   stages {
     stage('Deploy UI'){
       when { branch 'main' }
       steps {
         sh '''
-          aws s3 cp file.txt s3://$DEPLOY_ENV-uniquely-grand-oriole-us-east-1/$DEPLOY_ENV
+          sed -i 's/ENVIRONMENT/$DEPLY_ENV/g' assets/index.html
+          aws s3 cp assets/index.html s3://development-rady-bucket-ziyotek-us-east-1/index.html
         '''
       }
     }
@@ -23,7 +24,8 @@ pipeline {
       when { branch 'qa' }
       steps {
         sh '''
-          aws s3 cp file.txt s3://bucket/qa
+          sed -i 's/ENVIRONMENT/$DEPLY_ENV/g' assets/index.html
+          aws s3 cp assets/index.html s3://development-rady-bucket-ziyotek-us-east-1/index.html
         '''
       }
     }

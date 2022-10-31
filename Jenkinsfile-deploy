@@ -16,7 +16,7 @@ parameters {
       steps {
         sh '''
           sed -i 's/ENVIRONMENT/$DEPLY_ENV/g' assets/index.html
-          aws s3 cp assets/index.html s3://jenkins-bucket-ziyotek-<caller_id>/index.html
+          aws s3 cp assets/index.html s3://jenkins-bucket-ziyotek-<caller_id>/index.html # for me=>  radyzone.click
         '''
       }
     }
